@@ -1,0 +1,62 @@
+;
+
+public class Task2 {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter your name: ");
+        String st =  sc.nextLine();
+        System.out.println("\nWelcome to Grade Calculator " + st);
+        int Sub = 0;
+        System.out.println("Total number of Subjects ?");
+        Sub = sc.nextInt();
+        int[] marks = new int[Sub];
+        for(int i = 0; i < marks.length; i++)
+        {
+            System.out.println("\nEnter Mark " + (i + 1) + ":");
+            marks[i] = sc.nextInt();
+
+            while(marks[i] < 0 || marks[i] > 100)
+            {
+                System.out.println("\nPlease Enter correct Mark for Subject " + (i + 1) + ":");
+                marks[i] = sc.nextInt();
+            }
+        }
+        int finMark = 0;
+        double averageMark = 0.0;
+        String grad = "";
+
+        for(int m = 0; m < marks.length; m++)
+        {
+            finMark += marks[m];
+        }
+        averageMark = finMark/Sub;
+
+        if(averageMark >= 80)
+        {
+            grad = "A";
+        }else if(averageMark >= 70 && averageMark < 80)
+        {
+            grad = "B";
+        }else if(averageMark >= 60 && averageMark < 70)
+        {
+            grad = "C";
+        }else if(averageMark >= 50 && averageMark < 60)
+        {
+            grad = "D";
+        }else if(averageMark >= 40 && averageMark < 50)
+        {
+            grad = "E";
+        }else if(averageMark >= 30 && averageMark < 40)
+        {
+            grad = "F";
+        }else
+        {
+            grad = "FF";
+        }
+        System.out.printf("\n\nCandidate Name: %s\n\nTotal Number of Subjects: %d\nTotal Marks: %d\nAverage Mark: %.2f\nAchieved Grade: %s",
+                st,Sub,finMark,averageMark,grad);
+    }
+
+}
